@@ -1,0 +1,10 @@
+services:
+  ner_service:
+    build: ./ml
+    ports:
+      - "3000:3000"
+    environment:
+      - BENTOML_CONFIG=bentoml_config.yaml
+    volumes:
+      - .:/app
+    command: bentoml serve service:svc --port 3000 --host 0.0.0.0

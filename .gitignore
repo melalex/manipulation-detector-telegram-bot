@@ -1,0 +1,53 @@
+# Global ignores (common to all projects)
+*.log
+*.swp
+*.swo
+*.tmp
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.ipynb_checkpoints/
+
+# === app/ (Scala - SBT) ===
+app/target/
+app/project/target/
+app/project/project/
+app/.bloop/
+app/.metals/
+app/.ammonite/
+app/.idea/
+app/.vscode/
+app/.classpath
+app/.settings/
+app/.project
+
+# === ml/ (Python) ===
+ml/.venv/
+ml/venv/
+ml/env/
+ml/.pytest_cache/
+ml/.mypy_cache/
+ml/.ipynb_checkpoints/
+ml/.idea/
+ml/.vscode/
+ml/bentoml_bentos/
+ml/bento_bundle/
+ml/__pycache__/
+ml/*.pyc
+ml/*.pyo
+ml/*.pyd
+
+# Jupyter Notebook outputs (optional)
+ml/**/*.nbconvert.ipynb
+
+# === General container/build artifacts ===
+docker-compose.override.yml
+*.tar.gz
+*.zip
+*.egg-info/
+dist/
+build/
+.eggs/
+.cache/
+*.db

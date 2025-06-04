@@ -1,0 +1,25 @@
+# Python venv
+.venv/
+
+# System files
+__pycache__/
+*.pyc
+
+# Bento build artifacts
+bentoml_bentos/
+bento_bundle/
+
+# Git files
+.git/
+.gitignore
+
+# Editor configs
+*.swp
+*.DS_Store
+
+# Test data, notebooks, etc.
+tests/
+*.ipynb
+
+# Custom
+/curl
