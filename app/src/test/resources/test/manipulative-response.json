@@ -1,0 +1,490 @@
+[
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.5748392343521118,
+    "index": 3,
+    "word": "▁ма",
+    "start": 12,
+    "end": 14
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.5832533240318298,
+    "index": 4,
+    "word": "пи",
+    "start": 14,
+    "end": 16
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.6614770293235779,
+    "index": 9,
+    "word": "▁російського",
+    "start": 31,
+    "end": 42
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.855540931224823,
+    "index": 10,
+    "word": "▁військово",
+    "start": 43,
+    "end": 52
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.8734320998191833,
+    "index": 11,
+    "word": "го",
+    "start": 52,
+    "end": 54
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.8976582288742065,
+    "index": 12,
+    "word": "▁експерт",
+    "start": 55,
+    "end": 62
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.8610920310020447,
+    "index": 13,
+    "word": "а",
+    "start": 62,
+    "end": 63
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9342455863952637,
+    "index": 14,
+    "word": ",",
+    "start": 63,
+    "end": 64
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.985918402671814,
+    "index": 15,
+    "word": "▁кух",
+    "start": 65,
+    "end": 68
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9686772227287292,
+    "index": 16,
+    "word": "ара",
+    "start": 68,
+    "end": 71
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9914172291755676,
+    "index": 17,
+    "word": "▁пут",
+    "start": 72,
+    "end": 75
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9882850646972656,
+    "index": 18,
+    "word": "іна",
+    "start": 75,
+    "end": 78
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9777235388755798,
+    "index": 19,
+    "word": "▁2",
+    "start": 79,
+    "end": 80
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9868157505989075,
+    "index": 20,
+    "word": "▁роз",
+    "start": 81,
+    "end": 84
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9831957221031189,
+    "index": 21,
+    "word": "ряд",
+    "start": 84,
+    "end": 87
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9841791987419128,
+    "index": 22,
+    "word": "у",
+    "start": 87,
+    "end": 88
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9350431561470032,
+    "index": 23,
+    "word": ",",
+    "start": 88,
+    "end": 89
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.973223090171814,
+    "index": 24,
+    "word": "▁",
+    "start": 90,
+    "end": 91
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9764785766601562,
+    "index": 25,
+    "word": "спеціаліст",
+    "start": 90,
+    "end": 100
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9495790600776672,
+    "index": 26,
+    "word": "а",
+    "start": 100,
+    "end": 101
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9896284341812134,
+    "index": 27,
+    "word": "▁по",
+    "start": 102,
+    "end": 104
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9917245507240295,
+    "index": 28,
+    "word": "▁сна",
+    "start": 105,
+    "end": 108
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9932663440704346,
+    "index": 29,
+    "word": "ряд",
+    "start": 108,
+    "end": 111
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9914353489875793,
+    "index": 30,
+    "word": "ному",
+    "start": 111,
+    "end": 115
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9916225075721741,
+    "index": 31,
+    "word": "▁голод",
+    "start": 116,
+    "end": 121
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9904645681381226,
+    "index": 32,
+    "word": "у",
+    "start": 121,
+    "end": 122
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.8986406326293945,
+    "index": 33,
+    "word": "▁та",
+    "start": 123,
+    "end": 125
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.7526553273200989,
+    "index": 53,
+    "word": "▁При",
+    "start": 186,
+    "end": 189
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.6544320583343506,
+    "index": 54,
+    "word": "го",
+    "start": 189,
+    "end": 191
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.7537807822227478,
+    "index": 55,
+    "word": "жин",
+    "start": 191,
+    "end": 194
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.931238055229187,
+    "index": 56,
+    "word": "▁прогноз",
+    "start": 195,
+    "end": 202
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.8892810940742493,
+    "index": 57,
+    "word": "ує",
+    "start": 202,
+    "end": 204
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.8903964161872864,
+    "index": 58,
+    "word": ",",
+    "start": 204,
+    "end": 205
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9344419836997986,
+    "index": 59,
+    "word": "▁що",
+    "start": 206,
+    "end": 208
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9649076461791992,
+    "index": 60,
+    "word": "▁нев",
+    "start": 209,
+    "end": 212
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9665344953536987,
+    "index": 61,
+    "word": "дов",
+    "start": 212,
+    "end": 215
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9605094194412231,
+    "index": 62,
+    "word": "зі",
+    "start": 215,
+    "end": 217
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9766623973846436,
+    "index": 63,
+    "word": "▁на",
+    "start": 218,
+    "end": 220
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.975205659866333,
+    "index": 64,
+    "word": "стане",
+    "start": 220,
+    "end": 225
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.979477047920227,
+    "index": 65,
+    "word": "▁день",
+    "start": 226,
+    "end": 230
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9812492728233337,
+    "index": 66,
+    "word": "▁звільнення",
+    "start": 231,
+    "end": 241
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9818527102470398,
+    "index": 67,
+    "word": "▁Криму",
+    "start": 242,
+    "end": 247
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9735720157623291,
+    "index": 68,
+    "word": "▁і",
+    "start": 248,
+    "end": 249
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.98653644323349,
+    "index": 69,
+    "word": "▁день",
+    "start": 250,
+    "end": 254
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9925891160964966,
+    "index": 70,
+    "word": "▁роз",
+    "start": 255,
+    "end": 258
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9920444488525391,
+    "index": 71,
+    "word": "пад",
+    "start": 258,
+    "end": 261
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9898549318313599,
+    "index": 72,
+    "word": "у",
+    "start": 261,
+    "end": 262
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9929894208908081,
+    "index": 73,
+    "word": "▁рос",
+    "start": 263,
+    "end": 266
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9914634823799133,
+    "index": 74,
+    "word": "ії",
+    "start": 266,
+    "end": 268
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.883443295955658,
+    "index": 75,
+    "word": ".",
+    "start": 268,
+    "end": 269
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9728519916534424,
+    "index": 76,
+    "word": "▁Ка",
+    "start": 270,
+    "end": 272
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9763063788414001,
+    "index": 77,
+    "word": "же",
+    "start": 272,
+    "end": 274
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9608606100082397,
+    "index": 78,
+    "word": ",",
+    "start": 274,
+    "end": 275
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9753823280334473,
+    "index": 79,
+    "word": "▁що",
+    "start": 276,
+    "end": 278
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9884482026100159,
+    "index": 80,
+    "word": "▁перед",
+    "start": 279,
+    "end": 284
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9835874438285828,
+    "index": 81,
+    "word": "умов",
+    "start": 284,
+    "end": 288
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9853371977806091,
+    "index": 82,
+    "word": "и",
+    "start": 288,
+    "end": 289
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9805794358253479,
+    "index": 83,
+    "word": "▁цього",
+    "start": 290,
+    "end": 295
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9843723773956299,
+    "index": 84,
+    "word": "▁вже",
+    "start": 296,
+    "end": 299
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9901173710823059,
+    "index": 85,
+    "word": "▁створен",
+    "start": 300,
+    "end": 307
+  },
+  {
+    "entity": "I-MANIPULATION",
+    "score": 0.9864648580551147,
+    "index": 86,
+    "word": "і",
+    "start": 307,
+    "end": 308
+  }
+]
