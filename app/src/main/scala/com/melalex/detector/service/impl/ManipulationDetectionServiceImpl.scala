@@ -32,9 +32,9 @@ class ManipulationDetectionServiceImpl[F[_]: Functor](client: ManipulationDetect
         case head :: tail =>
           val (start, end) = head
           iter(
-            end + 1,
+            end,
             tail,
-            "</mark>" :: text.substring(start, end + 1) :: "<mark>" :: text.substring(i, start) :: acc
+            "</u>" :: text.substring(start, end) :: "<u>" :: text.substring(i, start) :: acc
           )
       }
 
