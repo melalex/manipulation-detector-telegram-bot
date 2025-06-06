@@ -1,0 +1,44 @@
+# SBT target directories
+target/
+*/target/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code files
+.vscode/
+
+# MacOS files
+.DS_Store
+
+# Log files
+*.log
+
+# Git
+.git/
+.gitignore
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Test output
+test-output/
+
+# User-specific SBT files
+~/.sbt/
+~/.ivy2/
+~/.cache/
+~/.coursier/
+
+# System-specific files
+Thumbs.db
+ehthumbs.db
+
+# Build artifacts
+dist/
+out/
+bin/

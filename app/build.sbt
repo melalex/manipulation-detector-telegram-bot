@@ -1,4 +1,5 @@
 import Dependencies._
+import sbtassembly.AssemblyPlugin.autoImport._
 
 name := "manipulation-detector-telegram-bot"
 version := "0.1.0-SNAPSHOT"
@@ -61,9 +62,28 @@ libraryDependencies ++= Seq(
   Libraries.circeParser,
   Libraries.logback,
   Libraries.logging,
+  Libraries.slf4j,
   Libraries.scalaTest      % Test,
   Libraries.scalaCheck     % Test,
   Libraries.catsScalaCheck % Test,
   Libraries.wiremock       % Test,
   Libraries.mockito        % Test
 )
+
+assembly / mainClass := Some("com.melalex.detector.Main")
+
+assembly / assemblyMergeStrategy := {
+  case PathList("module-info.class") =>
+    MergeStrategy.discard
+
+  case PathList("META-INF", xs @ _*) =>
+    xs match {
+      case "io.netty.versions.properties" :: Nil => MergeStrategy.first
+      case _ => MergeStrategy.discard
+    }
+
+  // Default strategies
+  case x =>
+    val oldStrategy = (assembly / assemblyMergeStrategy).value
+    oldStrategy(x)
+}

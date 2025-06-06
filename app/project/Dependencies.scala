@@ -11,6 +11,7 @@ object Dependencies {
     val circe      = "0.14.13"
     val logback    = "1.5.18"
     val logging    = "3.9.5"
+    val slf4j      = "2.0.17"
 
     val scalaCheck     = "1.18.1"
     val scalaTest      = "3.2.19"
@@ -30,6 +31,7 @@ object Dependencies {
     lazy val pureConfig = "com.github.pureconfig"      %% "pureconfig"    % Versions.pureConfig
     lazy val telegram   = "com.bot4s"                  %% "telegram-core" % Versions.telegram
     lazy val logging    = "com.typesafe.scala-logging" %% "scala-logging" % Versions.logging
+    lazy val slf4j      = "org.slf4j"                  % "slf4j-api"      % Versions.slf4j
 
     lazy val asyncHttpClient      = sttp("async-http-client-backend-cats")
     lazy val asyncHttpClientCirce = sttp("circe")
