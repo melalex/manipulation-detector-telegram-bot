@@ -1,0 +1,19 @@
+services:
+  ml:
+    build:
+      context: ./ml
+    container_name: ml-service
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  app:
+    build:
+      context: ./app
+    container_name: app-service
+    depends_on:
+      - ml
+    environment:
+      TELEGRAM_API_KEY: ${TELEGRAM_API_KEY}
+      MANIPULATION_DETECTOR_BASE_URL: http://ml:3000
+    restart: unless-stopped
