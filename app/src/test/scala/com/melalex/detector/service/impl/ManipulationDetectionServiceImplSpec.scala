@@ -8,6 +8,7 @@ import com.melalex.detector.client.ManipulationDetectorProtocol.{
   ManipulationDetectorResponseEntry
 }
 import com.melalex.detector.error.{ AppError, AppException }
+import com.melalex.detector.repository.PredictionRepository
 import com.melalex.detector.test.ResourceUtil.{ parseJsonResource, readResourceAsString }
 import org.mockito.Mockito.when
 import org.scalatest.flatspec.AnyFlatSpec
@@ -22,13 +23,14 @@ class ManipulationDetectionServiceImplSpec extends AnyFlatSpec with Matchers wit
     val responseEntries = parseJsonResource[Seq[ManipulationDetectorResponseEntry]]("test/manipulative-response.json")
     val response        = ManipulationDetectorResponse(responseEntries)
 
-    val mockClient = mock[ManipulationDetectorClient[Id]]
-    val inputText  = request.text
+    val mockClient           = mock[ManipulationDetectorClient[Id]]
+    val predictionRepository = mock[PredictionRepository[Id]]
+    val inputText            = request.text
 
     when(mockClient.detectManipulation(ManipulationDetectorRequest(inputText)))
       .thenReturn(Right(response))
 
-    val service = new ManipulationDetectionServiceImpl[Id](mockClient)
+    val service = new ManipulationDetectionServiceImpl[Id](mockClient, predictionRepository)
 
     val result = service.detectManipulation(inputText)
 
@@ -36,14 +38,15 @@ class ManipulationDetectionServiceImplSpec extends AnyFlatSpec with Matchers wit
   }
 
   it should "return None when no manipulation entities are found" in {
-    val mockClient = mock[ManipulationDetectorClient[Id]]
-    val inputText  = "Just a normal sentence."
-    val response   = ManipulationDetectorResponse(Seq.empty)
+    val mockClient           = mock[ManipulationDetectorClient[Id]]
+    val predictionRepository = mock[PredictionRepository[Id]]
+    val inputText            = "Just a normal sentence."
+    val response             = ManipulationDetectorResponse(Seq.empty)
 
     when(mockClient.detectManipulation(ManipulationDetectorRequest(inputText)))
       .thenReturn(Right(response))
 
-    val service = new ManipulationDetectionServiceImpl[Id](mockClient)
+    val service = new ManipulationDetectionServiceImpl[Id](mockClient, predictionRepository)
 
     val result = service.detectManipulation(inputText)
 
@@ -51,14 +54,15 @@ class ManipulationDetectionServiceImplSpec extends AnyFlatSpec with Matchers wit
   }
 
   it should "propagate error from the client" in {
-    val mockClient = mock[ManipulationDetectorClient[Id]]
-    val inputText  = "Faulty input."
-    val error      = Left(AppException(AppError("0", "API failure")))
+    val mockClient           = mock[ManipulationDetectorClient[Id]]
+    val predictionRepository = mock[PredictionRepository[Id]]
+    val inputText            = "Faulty input."
+    val error                = Left(AppException(AppError("0", "API failure")))
 
     when(mockClient.detectManipulation(ManipulationDetectorRequest(inputText)))
       .thenReturn(error)
 
-    val service = new ManipulationDetectionServiceImpl[Id](mockClient)
+    val service = new ManipulationDetectionServiceImpl[Id](mockClient, predictionRepository)
 
     val result = service.detectManipulation(inputText)
 

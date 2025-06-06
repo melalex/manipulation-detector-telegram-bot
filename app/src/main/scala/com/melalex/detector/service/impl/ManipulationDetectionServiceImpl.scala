@@ -1,23 +1,35 @@
 package com.melalex.detector.service.impl
 
-import cats.Functor
+import cats.Monad
 import cats.data.EitherT
+import cats.implicits._
 import com.melalex.detector.client.ManipulationDetectorClient
 import com.melalex.detector.client.ManipulationDetectorProtocol.{
   ManipulationDetectorRequest,
   ManipulationDetectorResponse,
   ManipulationDetectorResponseEntry
 }
+import com.melalex.detector.domain.PredictionEntity
 import com.melalex.detector.error.AppEither
+import com.melalex.detector.repository.PredictionRepository
 import com.melalex.detector.service.ManipulationDetectionService
 
 import scala.annotation.tailrec
 
-class ManipulationDetectionServiceImpl[F[_]: Functor](client: ManipulationDetectorClient[F])
+class ManipulationDetectionServiceImpl[F[_]: Monad](client: ManipulationDetectorClient[F],
+                                                    predictionRepository: PredictionRepository[F])
     extends ManipulationDetectionService[F] {
 
   override def detectManipulation(text: String): F[AppEither[Option[String]]] =
-    EitherT(client.detectManipulation(ManipulationDetectorRequest(text))).map(compileResult(text)).value
+    EitherT(client.detectManipulation(ManipulationDetectorRequest(text)))
+      .map(compileResult(text))
+      .semiflatMap(savePrediction(text))
+      .value
+
+  private def savePrediction(text: String)(prediction: Option[String]): F[Option[String]] =
+    for {
+      _ <- predictionRepository.insert(PredictionEntity(text, prediction))
+    } yield prediction
 
   private def compileResult(text: String)(ner: ManipulationDetectorResponse): Option[String] =
     if (ner.entries.isEmpty) None

@@ -51,6 +51,9 @@ resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
+  Libraries.mongoCatsCore,
+  Libraries.mongoDriver,
+  Libraries.mongoCatsCirce,
   Libraries.telegram,
   Libraries.asyncHttpClient,
   Libraries.asyncHttpClientCirce,
@@ -63,11 +66,12 @@ libraryDependencies ++= Seq(
   Libraries.logback,
   Libraries.logging,
   Libraries.slf4j,
-  Libraries.scalaTest      % Test,
-  Libraries.scalaCheck     % Test,
-  Libraries.catsScalaCheck % Test,
-  Libraries.wiremock       % Test,
-  Libraries.mockito        % Test
+  Libraries.mongoCatsEmbedded % Test,
+  Libraries.scalaTest         % Test,
+  Libraries.scalaCheck        % Test,
+  Libraries.catsScalaCheck    % Test,
+  Libraries.wiremock          % Test,
+  Libraries.mockito           % Test
 )
 
 assembly / mainClass := Some("com.melalex.detector.Main")
@@ -79,7 +83,7 @@ assembly / assemblyMergeStrategy := {
   case PathList("META-INF", xs @ _*) =>
     xs match {
       case "io.netty.versions.properties" :: Nil => MergeStrategy.first
-      case _ => MergeStrategy.discard
+      case _                                     => MergeStrategy.discard
     }
 
   // Default strategies

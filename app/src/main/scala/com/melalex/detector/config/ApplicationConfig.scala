@@ -2,7 +2,8 @@ package com.melalex.detector.config
 
 case class ApplicationConfig(
     telegram: TelegramConfig,
-    manipulationDetectorProvider: ManipulationDetectorProviderConfig
+    manipulationDetectorProvider: ManipulationDetectorProviderConfig,
+    mongo: MongoConfig
 )
 
 case class TelegramConfig(
@@ -12,4 +13,9 @@ case class TelegramConfig(
 case class ManipulationDetectorProviderConfig(
     baseUrl: String,
     apiKey: Option[String]
+)
+
+case class MongoConfig(
+    connectionString: String,
+    database: String
 )
