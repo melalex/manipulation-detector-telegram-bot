@@ -14,28 +14,29 @@ Features:
 ## Project structure
 
 ```
-├── app                <- Implementation of the Telegram bot.
-│   ├── project        <- SBT sources.
-│   ├── src            <- Bot source code.
-│   ├── build.sbt      <- SBT build file.
-│   └── Dockerfile     <- Bot docker file.
-├── ml                 <- Definition of ml model and bentoml service.
-│   ├── curl           <- Request examples.
-│   ├── src            <- bentoml service definition.
-│   ├── Dockerfile     <- ML model docker file.
-│   └── Makefile       <- Build definition.
-├── scrapper           <- Implementation of the Telegram bot to scrap channels.
-│   ├── project        <- SBT sources.
-│   ├── src            <- Bot source code.
-│   ├── build.sbt      <- SBT build file.
-│   └── Dockerfile     <- Bot docker file.
-├── pipeline           <- Spark ETL pipeline predict manipulations on scrapped messages.
-│   ├── project        <- SBT sources.
-│   ├── src            <- Pipeline source code.
-│   ├── build.sbt      <- SBT build file.
-│   └── Dockerfile     <- Pipeline docker file.
-├── docker-compose.yml <- Docker compose file to bootstrap application
-└── README.md          <- The top-level README for developers using this project.
+├── app                         <- Implementation of the Telegram bot.
+│   ├── project                 <- SBT sources.
+│   ├── src                     <- Bot source code.
+│   ├── build.sbt               <- SBT build file.
+│   └── Dockerfile              <- Bot docker file.
+├── ml                          <- Definition of ml model and bentoml service.
+│   ├── curl                    <- Request examples.
+│   ├── src                     <- bentoml service definition.
+│   ├── Dockerfile              <- ML model docker file.
+│   └── Makefile                <- Build definition.
+├── scrapper                    <- Implementation of the Telegram bot to scrap channels.
+│   ├── project                 <- SBT sources.
+│   ├── src                     <- Bot source code.
+│   ├── build.sbt               <- SBT build file.
+│   └── Dockerfile              <- Bot docker file.
+├── pipeline                    <- Spark ETL pipeline predict manipulations on scrapped messages.
+│   ├── project                 <- SBT sources.
+│   ├── src                     <- Pipeline source code.
+│   ├── build.sbt               <- SBT build file.
+│   └── Dockerfile              <- Pipeline docker file.
+├── docker-compose.yml          <- Docker compose file to bootstrap application.
+├── docker-compose-pipeline.yml <- Docker compose file to bootstrap ETL pipeline.
+└── README.md                   <- The top-level README for developers using this project.
 ```
 
 ## Run locally
