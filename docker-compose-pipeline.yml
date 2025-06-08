@@ -1,0 +1,145 @@
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - spark-net
+
+  spark-master:
+    image: bitnami/spark:4.0.0
+    container_name: spark-master
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_IP=spark-master
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+    networks:
+      - spark-net
+
+  spark-worker:
+    image: bitnami/spark:4.0.0
+    container_name: spark-worker
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    depends_on:
+      - spark-master
+    networks:
+      - spark-net
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - spark-net
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CFG_BROKER_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@:9093
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+    depends_on:
+      - zookeeper
+    networks:
+      - spark-net
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "8000:8080"
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+    depends_on:
+      - kafka
+    networks:
+      - spark-net
+
+  ml:
+    build:
+      context: ./ml
+    container_name: ml-service
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    networks:
+      - spark-net
+
+  scrapper:
+    user: root
+    build:
+      context: ./scrapper
+    container_name: scrapper-service
+    depends_on:
+      - ml
+      - mongodb
+      - kafka
+    environment:
+      TELEGRAM_API_KEY: ${TELEGRAM_API_KEY}
+      KAFKA_BOOTSTRAP_SERVERS_CONFIG: kafka:9092
+    restart: unless-stopped
+    networks:
+      - spark-net
+
+  pipeline:
+    user: root
+    build:
+      context: ./pipeline
+    container_name: pipeline-service
+    depends_on:
+      - ml
+      - mongodb
+      - spark-master
+      - spark-worker
+      - scrapper
+      - kafka
+    environment:
+      MANIPULATION_DETECTOR_BASE_URL: http://ml:3000
+      SPARK_CHECKPOINT_LOCATION: /data/checkpoints
+      KAFKA_BOOTSTRAP_SERVERS_CONFIG: kafka:9092
+    restart: unless-stopped
+    volumes:
+      - spark_checkpoints:/data/checkpoints
+    networks:
+      - spark-net
+    command: >
+      spark-submit
+      --class com.melalex.detector.TelegramNERPipeline
+      --packages org.apache.spark:spark-core_2.13:4.0.0,org.apache.spark:spark-sql_2.13:4.0.0,org.apache.spark:spark-streaming_2.13:4.0.0,org.mongodb.spark:mongo-spark-connector_2.13:10.5.0,com.softwaremill.sttp.client3:core_2.13:3.11.0,com.softwaremill.sttp.client3:circe_2.13:3.11.0,io.circe:circe-generic_2.13:0.14.13,io.circe:circe-parser_2.13:0.14.13,com.github.pureconfig:pureconfig_2.13:0.17.9,com.typesafe.scala-logging:scala-logging_2.13:3.9.5,org.slf4j:slf4j-api:2.0.17,ch.qos.logback:logback-classic:1.5.18,org.apache.spark:spark-sql-kafka-0-10_2.13:4.0.0
+      --master spark://spark-master:7077
+      --conf spark.mongodb.write.connection.uri=mongodb://mongodb:27017
+      /opt/spark-app/manipulation-detector-telegram-pipeline.jar
+
+volumes:
+  mongodb_data:
+  spark_checkpoints:
+
+networks:
+  spark-net:
+    driver: bridge

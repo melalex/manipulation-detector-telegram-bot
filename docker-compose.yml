@@ -22,6 +22,7 @@ services:
     container_name: app-service
     depends_on:
       - ml
+      - mongodb
     environment:
       TELEGRAM_API_KEY: ${TELEGRAM_API_KEY}
       MANIPULATION_DETECTOR_BASE_URL: http://ml:3000

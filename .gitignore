@@ -8,6 +8,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.ipynb_checkpoints/
+data
 
 # === app/ (Scala - SBT) ===
 app/target/
@@ -21,6 +22,32 @@ app/.vscode/
 app/.classpath
 app/.settings/
 app/.project
+
+# === pipeline/ (Scala - SBT) ===
+pipeline/target/
+pipeline/project/target/
+pipeline/project/project/
+pipeline/.bloop/
+pipeline/.metals/
+pipeline/.ammonite/
+pipeline/.idea/
+pipeline/.vscode/
+pipeline/.classpath
+pipeline/.settings/
+pipeline/.project
+
+# === scrapper/ (Scala - SBT) ===
+scrapper/target/
+scrapper/project/target/
+scrapper/project/project/
+scrapper/.bloop/
+scrapper/.metals/
+scrapper/.ammonite/
+scrapper/.idea/
+scrapper/.vscode/
+scrapper/.classpath
+scrapper/.settings/
+scrapper/.project
 
 # === ml/ (Python) ===
 ml/.venv/
